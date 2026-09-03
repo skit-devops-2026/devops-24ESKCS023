@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Library</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">📚 Digital Library</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="register.html">Register</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero / Intro -->
+  <section class="hero">
+    <h1>Welcome to Digital Library</h1>
+    <p>Discover, read, and save your favorite books — all in one place.</p>
+
+    <form class="search-bar" onsubmit="handleHomeSearch(event)">
+      <input type="text" id="home-search-input" placeholder="Search by title, author, or category...">
+      <button type="submit" class="btn btn-accent">Search</button>
+    </form>
+  </section>
+
+  <!-- Featured Books -->
+  <section class="section">
+    <h2>Featured Books</h2>
+    <div class="book-grid" id="featured-books">
+      <!-- Filled dynamically by script.js -->
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="section">
+    <h2>Browse by Category</h2>
+    <div class="category-list">
+      <div class="category-chip">Programming</div>
+      <div class="category-chip">Fiction</div>
+      <div class="category-chip">History</div>
+      <div class="category-chip">Science</div>
+      <div class="category-chip">Biography</div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    &copy; 2026 Digital Library. All rights reserved.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
