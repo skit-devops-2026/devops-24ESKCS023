@@ -34,3 +34,12 @@ make run
 
 `GET /health` returns the running commit SHA. See `Makefile` and the milestone
 sheet for why this is required.
+
+## DevOps Workflow
+
+This project follows a DevOps workflow using Git and GitHub for
+version control, GitHub Actions for continuous integration, and
+Jenkins for CI/CD automation.
+
+The project will later be containerized and deployed as part of
+the remaining DevOps milestones.
