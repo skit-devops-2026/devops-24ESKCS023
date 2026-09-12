@@ -15,9 +15,9 @@ A digital library is an online collection of books, research papers, and media s
 
 ## Tech stack
 
-- Frontend: <e.g. Html ,css, javascript>
-- Backend: <e.g. Node.js>
-- Database: <e.g. MongoDB>
+- Frontend: Html ,css, javascript
+- Backend: Node.js
+- Database: MongoDB
 
 ## Running locally
 
@@ -28,7 +28,7 @@ make run
 
 ## Live URL
 
-<Add once M5 is done. Until then, leave as is.>
+ once M5 is done. Until then, leave as is.
 
 ## Health endpoint
 
