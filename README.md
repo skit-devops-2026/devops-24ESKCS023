@@ -50,3 +50,11 @@ the remaining DevOps milestones.
 - `k8s` - Kubernetes configuration
 - `monitoring` - Monitoring configuration
 - `scripts` - Project scripts
+
+## Local Setup
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/skit-devops-2026/devops-24ESKCS023.git
+cd devops-24ESKCS023
