@@ -43,3 +43,10 @@ Jenkins for CI/CD automation.
 
 The project will later be containerized and deployed as part of
 the remaining DevOps milestones.
+## Project Structure
+
+- `.github/workflows` - GitHub Actions workflow
+- `docs` - Project documentation
+- `k8s` - Kubernetes configuration
+- `monitoring` - Monitoring configuration
+- `scripts` - Project scripts
