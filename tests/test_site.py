@@ -25,6 +25,7 @@ def test_dummy_books_are_well_formed():
     assert match, "dummyBooks array not found in script.js"
     # crude JS->JSON cleanup for a simple literal array
     raw = re.sub(r"(\w+):", r'"\1":', match.group(1))
+    raw = re.sub(r'([{,]\s*)(\w+):', r'\1"\2":', match.group(1))
     books = json.loads(raw)
     assert len(books) > 0
     for book in books:
