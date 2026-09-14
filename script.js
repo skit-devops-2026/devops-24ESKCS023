@@ -132,6 +132,44 @@ function handleRegisterSubmit(event) {
   }
 }
 
+// ===== Contact Form Validation (front-end only for now) =====
+function handleContactSubmit(event) {
+  event.preventDefault();
+
+  const name = document.getElementById("contact-name").value.trim();
+  const email = document.getElementById("contact-email").value.trim();
+  const message = document.getElementById("contact-message").value.trim();
+  let valid = true;
+
+  if (!name) {
+    showError("contact-name-error", "Name is required.");
+    valid = false;
+  } else {
+    hideError("contact-name-error");
+  }
+
+  if (!email) {
+    showError("contact-email-error", "Email is required.");
+    valid = false;
+  } else {
+    hideError("contact-email-error");
+  }
+
+  if (!message) {
+    showError("contact-message-error", "Please write a short message.");
+    valid = false;
+  } else {
+    hideError("contact-message-error");
+  }
+
+  if (valid) {
+    // Sending this to the backend is optional and not part of the core mini
+    // project scope, but could be added later as a simple POST /api/contact route.
+    alert("Thanks for reaching out! (This form isn't connected to a backend yet.)");
+    document.getElementById("contact-form").reset();
+  }
+}
+
 function showError(id, message) {
   const el = document.getElementById(id);
   if (el) {
