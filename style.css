@@ -186,6 +186,46 @@ ul {
   color: var(--text-muted);
 }
 
+.fav-toggle-btn {
+  margin-top: 10px;
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background-color: white;
+  color: #444;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.fav-toggle-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.fav-toggle-btn.active {
+  background-color: #fdf1e0;
+  border-color: var(--accent);
+  color: #b3701f;
+}
+
+.favorites-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+}
+
+.favorites-empty .empty-icon {
+  font-size: 40px;
+  margin-bottom: 12px;
+}
+
+.favorites-empty a {
+  color: var(--primary);
+  font-weight: 600;
+}
+
 /* ===== Categories ===== */
 .category-list {
   display: flex;
