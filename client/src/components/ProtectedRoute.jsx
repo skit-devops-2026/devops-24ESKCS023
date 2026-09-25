@@ -1,0 +1,17 @@
+import { Navigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+
+// Blocks access unless the user is logged in
+const ProtectedRoute = ({ children }) => {
+  const { user, loading } = useAuth();
+
+  if (loading) return <div className="page-loading">Loading...</div>;
+
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return children;
+};
+
+export default ProtectedRoute;
