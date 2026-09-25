@@ -1,20 +1,21 @@
 .PHONY: install test build run docker-build docker-up
 
 install:
-	pip install -r requirements.txt
+	cd server && npm ci
+	cd client && npm ci
 
 test:
-	pytest -v
+	cd server && npm test
 
 build:
-	@mkdir -p build
-	@cp index.html login.html register.html script.js style.css build/
-	@echo "Build completed successfully"
+	cd client && npm run build
+
 run:
-	@echo "Open index.html in a web browser to run the application"
+	cd server && npm run dev
 
 docker-build:
-	docker build -t digital-library .
+	docker build -t digital-library-server ./server
+	docker build -t digital-library-client ./client
 
 docker-up:
 	docker compose up --build

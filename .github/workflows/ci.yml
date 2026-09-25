@@ -1,31 +1,20 @@
 name: CI
-
-on:
-  push:
-  pull_request:
+on: [push, pull_request]
 
 jobs:
   hygiene:
-    name: Repository hygiene
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Run hygiene checks
-        run: bash scripts/hygiene.sh
+        with: { fetch-depth: 0 }
+      - run: bash scripts/hygiene.sh
 
   build-and-test:
-    name: Build and test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
       - run: make install
       - run: make test
       - run: make build

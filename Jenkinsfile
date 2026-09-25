@@ -1,46 +1,15 @@
 pipeline {
     agent any
-
     stages {
-
-        stage('Checkout') {
+        stage('Checkout') { steps { echo 'Checking out Digital Library project...' } }
+        stage('Install') {
             steps {
-                echo 'Checking out Digital Library project...'
+                dir('server') { bat 'npm ci' }
+                dir('client') { bat 'npm ci' }
             }
         }
-
-        stage('Test') {
-            steps {
-                bat '''
-                if not exist index.html exit /b 1
-                if not exist login.html exit /b 1
-                if not exist register.html exit /b 1
-                if not exist script.js exit /b 1
-                if not exist style.css exit /b 1
-                echo All required project files are present.
-                '''
-            }
-        }
-
-        stage('Build') {
-            steps {
-                bat '''
-                if exist build rmdir /s /q build
-                mkdir build
-                copy index.html build\\
-                copy login.html build\\
-                copy register.html build\\
-                copy script.js build\\
-                copy style.css build\\
-                echo Build completed successfully.
-                '''
-            }
-        }
-
-        stage('Finish') {
-            steps {
-                echo 'Digital Library Jenkins pipeline completed successfully!'
-            }
-        }
+        stage('Test') { steps { dir('server') { bat 'npm test' } } }
+        stage('Build') { steps { dir('client') { bat 'npm run build' } } }
+        stage('Finish') { steps { echo 'Digital Library Jenkins pipeline completed successfully!' } }
     }
 }
