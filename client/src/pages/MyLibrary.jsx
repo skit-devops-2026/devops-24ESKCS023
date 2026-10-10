@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 
 const statusOptions = ["Want to Read", "Currently Reading", "Completed"];
@@ -6,6 +7,7 @@ const statusOptions = ["Want to Read", "Currently Reading", "Completed"];
 const MyLibrary = () => {
   const [entries, setEntries] = useState([]);
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const loadLibrary = () => {
     api.get("/library").then((res) => setEntries(res.data));
@@ -28,8 +30,8 @@ const MyLibrary = () => {
   };
 
   const handleRead = (book) => {
-    if (book.pdfUrl) {
-      window.open(book.pdfUrl, "_blank");
+    if (book && book.pdfUrl) {
+      navigate(`/read/${book._id}`);
     } else {
       setMessage("Reading file is currently unavailable.");
       setTimeout(() => setMessage(""), 3000);

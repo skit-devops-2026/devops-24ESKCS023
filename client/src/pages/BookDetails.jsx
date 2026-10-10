@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import api from "../services/api";
 import { useAuth } from "../context/AuthContext";
 
@@ -8,6 +8,7 @@ const BookDetails = () => {
   const [book, setBook] = useState(null);
   const [message, setMessage] = useState("");
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     api.get(`/books/${id}`).then((res) => setBook(res.data));
@@ -28,7 +29,7 @@ const BookDetails = () => {
 
   const handleRead = () => {
     if (book.pdfUrl) {
-      window.open(book.pdfUrl, "_blank");
+      navigate(`/read/${book._id}`);
     } else {
       setMessage("Reading file is currently unavailable.");
     }
