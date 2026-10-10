@@ -6,7 +6,9 @@ services:
     ports: ["27017:27017"]
 
   server:
-    build: ./server
+    build:
+      context: .
+      dockerfile: Dockerfile
     restart: unless-stopped
     depends_on: [mongo]
     environment:
@@ -18,7 +20,19 @@ services:
     build: ./client
     restart: unless-stopped
     depends_on: [server]
-    ports: ["8080:80"]
+    ports: ["8085:80"]
+
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports: ["9090:9090"]
+    depends_on: [server]
+
+  grafana:
+    image: grafana/grafana
+    ports: ["3001:3000"]
+    depends_on: [prometheus]
 
 volumes:
   mongo_data:

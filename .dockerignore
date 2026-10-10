@@ -1,0 +1,12 @@
+node_modules
+**/node_modules
+.git
+.env
+**/.env
+**/*.pdf
+client
+k8s
+docs
+monitoring
+tests
+.pytest_cache

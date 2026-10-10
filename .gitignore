@@ -30,3 +30,5 @@ npm-debug.log*
 
 # but keep the example file
 !.env.example
+server/public/books-pdfs/*.pdf
+.pytest_cache/
