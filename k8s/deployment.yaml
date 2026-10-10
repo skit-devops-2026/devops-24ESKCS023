@@ -12,8 +12,15 @@ spec:
       labels:
         app: server
     spec:
-    containers:
-    - name: server
-      image: digital-library-server:latest
-      ports:
-      - containerPort: 5000
+      containers:
+        - name: server
+          image: ghcr.io/skit-devops-2026/devops-24eskcs023:latest
+          ports:
+            - containerPort: 5000
+          envFrom:
+            - secretRef:
+                name: app-secrets
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 5000

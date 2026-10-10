@@ -1,8 +1,8 @@
 FROM node:20-alpine
 WORKDIR /app
-COPY package*.json ./
+COPY server/package*.json ./
 RUN npm ci --omit=dev
-COPY . .
+COPY server/ .
 ENV PORT=5000
 EXPOSE 5000
 CMD ["node", "server.js"]
